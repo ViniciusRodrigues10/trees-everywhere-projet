@@ -1,0 +1,67 @@
+/* static/css/planted_trees_in_accounts.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+/* Cabeçalho */
+h1 {
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Lista de árvores */
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+ul li {
+    background: #e9f5e9; /* Verde claro */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+ul li:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+ul li strong {
+    display: inline-block;
+    width: 150px;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+ul li span {
+    display: inline-block;
+    width: calc(100% - 160px);
+}
+
+/* Mensagem de nenhuma árvore plantada */
+p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #999;
+}

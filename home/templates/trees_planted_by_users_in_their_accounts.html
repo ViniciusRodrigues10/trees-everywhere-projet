@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Árvores Plantadas em suas Contas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/trees_planted_by_users_in_their_accounts.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Árvores Plantadas em suas Contas</h1>
+
+        {% if planted_trees %}
+            <ul>
+                {% for tree in planted_trees %}
+                    <li>
+                        <strong>Árvore:</strong> <span>{{ tree.tree.name }}</span><br>
+                        <strong>Idade:</strong> <span>{{ tree.age }}</span><br>
+                        <strong>Conta:</strong> <span>{{ tree.account.name }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Você não possui árvores plantadas em suas contas.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planted Trees</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/planted_trees.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Planted Trees</h1>
+        {% if trees %}
+            <ul>
+                {% for tree in trees %}
+                    <li>
+                        <strong>Tree:</strong> {{ tree.tree.name }}<br>
+                        <strong>Scientific Name:</strong> {{ tree.tree.scientific_name }}<br>
+                        <strong>Planted At:</strong> {{ tree.planted_at }}<br>
+                        <strong>Age:</strong> {{ tree.age }}<br>
+                        <strong>Location:</strong> ({{ tree.latitude }}, {{ tree.longitude }})<br>
+                        <strong>Account:</strong> {{ tree.account.name }}<br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have not planted any trees yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

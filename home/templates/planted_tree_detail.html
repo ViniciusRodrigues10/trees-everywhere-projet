@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/planted_tree_detail.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tree Details</h1>
+        <div class="tree-detail">
+            <p><strong>Tree:</strong> {{ tree.tree.name }}</p>
+            <p><strong>Scientific Name:</strong> {{ tree.tree.scientific_name }}</p>
+            <p><strong>Planted At:</strong> {{ tree.planted_at }}</p>
+            <p><strong>Age:</strong> {{ tree.age }}</p>
+            <p><strong>Location:</strong> ({{ tree.latitude }}, {{ tree.longitude }})</p>
+            <p><strong>Account:</strong> {{ tree.account.name }}</p>
+        </div>
+        <a href="{% url 'planted_trees' %}">Back to Planted Trees</a>
+    </div>
+</body>
+</html>
