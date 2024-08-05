@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from .models import PlantedTree
 from .forms import PlantedTreeForm
 
@@ -25,6 +26,11 @@ def user_login(request):
 def planted_trees(request):
     trees = PlantedTree.objects.filter(user=request.user)
     return render(request, "planted_trees.html", {"trees": trees})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect("/login")
 
 
 @login_required
