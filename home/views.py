@@ -2,8 +2,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib.auth import login as django_login
+from rest_framework import status
+from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.views import APIView
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
 from .models import PlantedTree
 from .forms import PlantedTreeForm
+from .serializers import PlantedTreeSerializer
 
 
 def user_login(request):
@@ -69,3 +78,43 @@ def list_trees_planted_by_user_in_your_accounts(request):
         "trees_planted_by_users_in_their_accounts.html",
         {"planted_trees": trees_in_acounts},
     )
+
+
+class UserLoginView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        username = request.data.get("username")
+        password = request.data.get("password")
+
+        if username is None or password is None:
+            return Response(
+                {"error": "Please provide both username and password."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            django_login(request, user)
+            token, created = Token.objects.get_or_create(user=user)
+            return Response(
+                {"message": "Successfully logged in.", "token": token.key},
+                status=status.HTTP_200_OK,
+            )
+        else:
+            return Response(
+                {"error": "Invalid username or password."},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+
+class UserPlantedTreesListView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+
+    def get(self, request):
+        user = request.user
+        trees_planted_by_user = PlantedTree.objects.filter(user=user)
+        serializer = PlantedTreeSerializer(trees_planted_by_user, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
