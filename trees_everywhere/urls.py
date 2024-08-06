@@ -35,4 +35,10 @@ urlpatterns = [
         views.list_trees_planted_by_user_in_your_accounts,
         name="list_planted_tree_in_your_accounts",
     ),
+    path("api/login", views.UserLoginView.as_view(), name="login"),
+    path(
+        "api/planted-trees/",
+        views.UserPlantedTreesListView.as_view(),
+        name="planted-trees-list",
+    ),
 ]
