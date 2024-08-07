@@ -165,6 +165,23 @@ class PlantedTreeForm(forms.ModelForm):
         fields = ["tree", "age", "latitude", "longitude", "account"]
 ```
 
+### UserRegistrationForm
+
+```python
+about = forms.CharField(required=False, widget=forms.Textarea)
+
+class Meta:
+    model = User
+    fields = ("username", "password1", "password2", "about")
+
+def save(self, commit=True):
+    user = super().save(commit=False)
+    if commit:
+        user.save()
+        Profile.objects.create(user=user, about=self.cleaned_data["about"])
+    return user
+```
+
 ## Serializers
 
 The project uses Django Rest Framework serializers to handle serialization and deserialization of model instances.
