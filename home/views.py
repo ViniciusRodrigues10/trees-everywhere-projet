@@ -13,6 +13,8 @@ from rest_framework.response import Response
 from .models import PlantedTree
 from .forms import PlantedTreeForm, UserRegistrationForm
 from .serializers import PlantedTreeSerializer
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 def register_user(request):
@@ -127,6 +129,53 @@ class UserLoginView(APIView):
 
     permission_classes = [AllowAny]
 
+    @swagger_auto_schema(
+        operation_description="Authenticate a user and provide a token upon successful login.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                "username": openapi.Schema(
+                    type=openapi.TYPE_STRING, description="The user's username."
+                ),
+                "password": openapi.Schema(
+                    type=openapi.TYPE_STRING, description="The user's password."
+                ),
+            },
+            required=["username", "password"],
+            description="Credentials required for user login.",
+        ),
+        responses={
+            200: openapi.Response(
+                description="User successfully logged in.",
+                content={
+                    "application/json": {
+                        "example": {
+                            "message": "Successfully logged in.",
+                            "token": "token_string_here",
+                        }
+                    }
+                },
+            ),
+            400: openapi.Response(
+                description="Invalid input. Please provide both username and password.",
+                content={
+                    "application/json": {
+                        "example": {
+                            "error": "Please provide both username and password."
+                        }
+                    }
+                },
+            ),
+            401: openapi.Response(
+                description="Unauthorized. Invalid username or password.",
+                content={
+                    "application/json": {
+                        "example": {"error": "Invalid username or password."}
+                    }
+                },
+            ),
+        },
+    )
     def post(self, request, *args, **kwargs):
         username = request.data.get("username")
         password = request.data.get("password")
@@ -161,6 +210,10 @@ class UserPlantedTreesListView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
+    @swagger_auto_schema(
+        operation_description="Retrieve a list of all trees planted by the authenticated user.",
+        responses={200: PlantedTreeSerializer(many=True)},
+    )
     def get(self, request):
         user = request.user
         trees_planted_by_user = PlantedTree.objects.filter(user=user)
