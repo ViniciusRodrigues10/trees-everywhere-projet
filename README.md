@@ -12,14 +12,16 @@
 ## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Installation and Setup](#installation-and-setup)
-3. [Models](#models)
-4. [Views](#views)
-5. [Forms](#forms)
-6. [Serializers](#serializers)
-7. [Admin Configuration](#admin-configuration)
-8. [Testing](#testing)
-9. [API Endpoints](#api-endpoints)
-10. [Conclusion](#conclusion)
+3. [Run the tests](#run-the-tests)
+4. [Stop and remove containers](#stop-and-remove-containers)
+5. [Models](#models)
+6. [Views](#views)
+7. [Forms](#forms)
+8. [Serializers](#serializers)
+9. [Admin Configuration](#admin-configuration)
+10. [Testing](#testing)
+11. [API Endpoints](#api-endpoints)
+12. [Conclusion](#conclusion)
 
 ---
 
@@ -43,7 +45,36 @@ This project is a Django application that allows users to plant trees and track 
     git clone https://github.com/ViniciusRodrigues10/trees-everywhere-projet.git
     ```
 
-2. Create a virtual environment and activate it:
+2. Build and start the Docker containers:
+   
+   ```bash
+   docker-compose up --build
+   ```
+
+3. Apply the migrations:
+
+   ```bash
+   docker-compose exec web python manage.py migrate
+   ```
+
+4. Create a superuser:
+
+   ```bash
+   docker-compose exec web python manage.py createsuperuser
+   ```
+   
+## Run the tests
+```bash
+   docker-compose exec web python manage.py test
+```
+
+## Stop and remove containers
+
+```bash
+   docker-compose down
+```
+
+<!--2. Create a virtual environment and activate it:
 
     ```bash
     python -m venv venv
@@ -73,6 +104,7 @@ This project is a Django application that allows users to plant trees and track 
     ```bash
     python manage.py runserver
     ```
+-->
 
 ## Models
 
