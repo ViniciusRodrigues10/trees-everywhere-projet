@@ -11,11 +11,31 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from .models import PlantedTree
-from .forms import PlantedTreeForm
+from .forms import PlantedTreeForm, UserRegistrationForm
 from .serializers import PlantedTreeSerializer
 
 
+def register_user(request):
+    """
+    Handles user registration requests.
+    """
+
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            django_login(request, user)
+            return redirect("login")
+    else:
+        form = UserRegistrationForm()
+    return render(request, "register_user.html", {"form": form})
+
+
 def user_login(request):
+    """
+    Handles user login. Authenticates and logs in the user if credentials are valid.
+    """
+
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -33,23 +53,39 @@ def user_login(request):
 
 @login_required
 def planted_trees(request):
+    """
+    Displays a list of trees planted by the logged-in user.
+    """
+
     trees = PlantedTree.objects.filter(user=request.user)
     return render(request, "planted_trees.html", {"trees": trees})
 
 
 def user_logout(request):
+    """
+    Logs out the user and redirects to the login page.
+    """
+
     logout(request)
     return redirect("/login")
 
 
 @login_required
 def planted_tree_detail(request, tree_id):
+    """
+    Displays the details of a specific planted tree for the logged-in user.
+    """
+
     tree = get_object_or_404(PlantedTree, id=tree_id, user=request.user)
     return render(request, "planted_tree_detail.html", {"tree": tree})
 
 
 @login_required
 def add_planted_tree(request):
+    """
+    Handles the addition of a new planted tree by the logged-in user.
+    """
+
     if request.method == "POST":
         form = PlantedTreeForm(request.POST)
         if form.is_valid():
@@ -64,6 +100,10 @@ def add_planted_tree(request):
 
 @login_required
 def list_trees_planted_by_user_in_your_accounts(request):
+    """
+    Displays a list of trees planted by the logged-in user across all their accounts.
+    """
+
     planted_trees = (
         PlantedTree.objects.filter(user=request.user)
         .select_related("account", "tree")
@@ -81,6 +121,10 @@ def list_trees_planted_by_user_in_your_accounts(request):
 
 
 class UserLoginView(APIView):
+    """
+    API view for user login. Returns a token if the credentials are valid.
+    """
+
     permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
@@ -110,6 +154,10 @@ class UserLoginView(APIView):
 
 
 class UserPlantedTreesListView(APIView):
+    """
+    API view to list all trees planted by the authenticated user.
+    """
+
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
