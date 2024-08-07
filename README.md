@@ -87,38 +87,6 @@ These were the technologies used to develop the project
    docker-compose down
 ```
 
-<!--2. Create a virtual environment and activate it:
-
-    ```bash
-    python -m venv venv
-    source env/bin/activate  # On Windows, use `env\Scripts\activate`
-    ```
-
-3. Install the required packages:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Apply the migrations:
-
-    ```bash
-    python manage.py migrate
-    ```
-
-5. Create a superuser:
-
-    ```bash
-    python manage.py createsuperuser
-    ```
-
-6. Run the development server:
-
-    ```bash
-    python manage.py runserver
-    ```
--->
-
 ## Models
 
 The project includes the following models:
