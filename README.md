@@ -22,7 +22,8 @@
 10. [Admin Configuration](#admin-configuration)
 11. [Testing](#testing)
 12. [API Endpoints](#api-endpoints)
-13. [Conclusion](#conclusion)
+13. [Swagger documentation](#swagger-documentation)
+14. [Conclusion](#conclusion)
 
 ---
 
@@ -40,6 +41,7 @@ These were the technologies used to develop the project
 - Docker
 - Commitizen
 - Sqlite3
+- Swagger
 
 ## Installation and Setup
 
@@ -367,6 +369,10 @@ Authorization: Token e30c20d52a6d0d20508ebc4e68a5ef90e59a3008
 ]
 ~~~
 
+## Swagger documentation
+
+- API documentation will be available at: `http://127.0.0.1:8000/swagger/`
+  
 ## Conclusion
 
 This documentation provides an overview of the project structure, models, views, forms, serializers, admin configuration, testing, and API endpoints. Use this as a guide to understand the project.
