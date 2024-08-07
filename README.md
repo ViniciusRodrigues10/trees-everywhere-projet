@@ -2,7 +2,7 @@
   <img src="https://github.com/user-attachments/assets/f46a7e13-1b3c-43fb-9bde-ed6c88c12120" alt="YS-mobilebanner@2x" />
 </p>
 
-# __________ Project Trees Everywhere - Teste YouShop _________
+# Project Trees Everywhere - Teste YouShop 
 </br>
 
 # Project Documentation
