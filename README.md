@@ -11,23 +11,35 @@
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
-2. [Installation and Setup](#installation-and-setup)
-3. [Run the tests](#run-the-tests)
-4. [Stop and remove containers](#stop-and-remove-containers)
-5. [Models](#models)
-6. [Views](#views)
-7. [Forms](#forms)
-8. [Serializers](#serializers)
-9. [Admin Configuration](#admin-configuration)
-10. [Testing](#testing)
-11. [API Endpoints](#api-endpoints)
-12. [Conclusion](#conclusion)
+2. [Technologies used](#technologies-used)
+3. [Installation and Setup](#installation-and-setup)
+4. [Run the tests](#run-the-tests)
+5. [Stop and remove containers](#stop-and-remove-containers)
+6. [Models](#models)
+7. [Views](#views)
+8. [Forms](#forms)
+9. [Serializers](#serializers)
+10. [Admin Configuration](#admin-configuration)
+11. [Testing](#testing)
+12. [API Endpoints](#api-endpoints)
+13. [Conclusion](#conclusion)
 
 ---
 
 ## Project Overview
 
 This project is a Django application that allows users to plant trees and track their planted trees. Users can log in, view their planted trees, and plant new trees. The project also includes a REST API for interacting with the tree planting functionality.
+
+## Technologies used
+
+These were the technologies used to develop the project
+
+- Python 3.10.12
+- Django
+- Django Rest Framework
+- Docker
+- Commitizen
+- Sqlite3
 
 ## Installation and Setup
 
@@ -36,6 +48,7 @@ This project is a Django application that allows users to plant trees and track 
 - Python 3.10.12
 - Django
 - Django Rest Framework
+- Docker
 
 ### Installation Steps
 
