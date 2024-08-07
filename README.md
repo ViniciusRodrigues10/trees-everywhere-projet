@@ -123,16 +123,65 @@ class PlantedTree(models.Model):
 
 The project includes both function-based views and class-based views for handling different functionalities.
 
-###
+### Function-Based Views
 
+- user_login
+- planted_trees
+- user_logout
+- planted_tree_detail
+- add_planted_tree
+- list_trees_planted_by_user_in_your_accounts
 
+### Class-Based Views
 
+- UserLoginView
+- UserPlantedTreesListView
 
+## Forms
 
+The project uses Django forms for handling user input.
 
+### PlantedTreeForm
 
+```python
+from django import forms
+from .models import PlantedTree
 
+class PlantedTreeForm(forms.ModelForm):
+    class Meta:
+        model = PlantedTree
+        fields = ["tree", "age", "latitude", "longitude", "account"]
+```
 
+## Serializers
 
+The project uses Django Rest Framework serializers to handle serialization and deserialization of model instances.
 
+### PlantedTreeSerializer
+
+```python
+from rest_framework import serializers
+from .models import PlantedTree
+
+class PlantedTreeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlantedTree
+        fields = ["id", "tree", "age", "latitude", "longitude", "planted_at", "account"]
+```
+
+## Admin Configuration
+
+The project includes custom admin configurations for managing the models.
+
+## AccountAdmin
+
+```python
+from django.contrib import admin
+from .models import Account, Profile, Tree, PlantedTree
+
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ("name", "created", "active")
+
+admin.site.register(Account, AccountAdmin)
+```
 
