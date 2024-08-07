@@ -360,7 +360,6 @@ Authorization: Token e30c20d52a6d0d20508ebc4e68a5ef90e59a3008
     "planted_at": "2023-01-01T00:00:00Z",
     "account": "Account 1"
   },
-  ...
 ]
 ~~~
 
