@@ -136,6 +136,7 @@ The project includes both function-based views and class-based views for handlin
 
 ### Function-Based Views
 
+- register_user
 - user_login
 - planted_trees
 - user_logout
