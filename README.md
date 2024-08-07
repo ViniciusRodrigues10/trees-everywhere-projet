@@ -1,17 +1,8 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f46a7e13-1b3c-43fb-9bde-ed6c88c12120" alt="YS-mobilebanner@2x" />
 </p>
-<p align="center">
-  <strong style="font-size: 8em;">Trees Everywhere - Teste YouShop</strong>
-</p>
 
-<p align="center">
-  <hr style="width: 50%; border: 2px solid black;"/>
-</p>
-
-
-
-
+# __________ Project Trees Everywhere - Teste YouShop _________
 </br>
 
 # Project Documentation
