@@ -55,7 +55,7 @@ This project is a Django application that allows users to plant trees and track 
 2. Create a virtual environment and activate it:
 
     ```bash
-    python -m venv env
+    python -m venv venv
     source env/bin/activate  # On Windows, use `env\Scripts\activate`
     ```
 
