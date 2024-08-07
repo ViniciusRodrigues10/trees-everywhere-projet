@@ -240,3 +240,59 @@ class TreePlantingTestCase(TestCase):
         """
         # ... (test code)
 ```
+
+### Views Tests
+```python
+from django.test import TestCase
+from django.contrib.auth.models import User
+from rest_framework.test import APIClient
+from ..models import Account, Profile, Tree, PlantedTree
+
+class TreePlantingTemplateTestCase(TestCase):
+    def setUp(self):
+        """
+        Sets up initial data and client for the test case.
+        """
+        # ... (setup code)
+
+    def test_list_user_planted_trees(self):
+        """
+        Tests that the user can list their planted trees.
+        """
+        # ... (test code)
+
+    def test_list_user_planted_trees_forbidden(self):
+        """
+        Tests that the user can list planted trees in their accounts.
+        """
+        # ... (test code)
+
+    def test_list_account_planted_trees(self):
+        """
+        Tests that the user can list trees planted in their account.
+        """
+        # ... (test code)
+
+    def test_plant_tree_view(self):
+        """
+        Tests that the user can plant a tree using the view.
+        """
+        # ... (test code)
+```
+
+## API Endpoints
+
+### Login
+
+**Endpoint:** /api/login
+
+**Method:** POST
+
+**Request:**
+
+~~~json
+{
+  "username": "ze",
+  "password": "teste123456789"
+}
+~~~
