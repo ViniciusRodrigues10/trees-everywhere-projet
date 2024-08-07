@@ -173,7 +173,7 @@ class PlantedTreeSerializer(serializers.ModelSerializer):
 
 The project includes custom admin configurations for managing the models.
 
-## AccountAdmin
+### AccountAdmin
 
 ```python
 from django.contrib import admin
@@ -185,3 +185,58 @@ class AccountAdmin(admin.ModelAdmin):
 admin.site.register(Account, AccountAdmin)
 ```
 
+### ProfileAdmin
+
+```python
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "joined")
+
+admin.site.register(Profile, ProfileAdmin)
+```
+
+### TreeAdmin
+```python
+class TreeAdmin(admin.ModelAdmin):
+    list_display = ("name", "scientific_name")
+
+admin.site.register(Tree, TreeAdmin)
+```
+
+### PlantedTreeAdmin
+```python
+class PlantedTreeAdmin(admin.ModelAdmin):
+    list_display = ("tree", "user", "age", "planted_at", "latitude", "longitude", "account")
+
+admin.site.register(PlantedTree, PlantedTreeAdmin)
+```
+
+## Testing
+
+The project includes tests for various functionalities.
+
+### Models Tests
+```python
+from django.test import TestCase
+from django.contrib.auth.models import User
+from ..models import Account, Profile, Tree, PlantedTree
+
+class TreePlantingTestCase(TestCase):
+    def setUp(self):
+        """
+        Sets up initial data for the test case.
+        """
+        # Create accounts and users
+        # ... (setup code)
+
+    def test_user_can_plant_tree(self):
+        """
+        Tests that a user can plant a single tree.
+        """
+        # ... (test code)
+
+    def test_user_can_plant_multiple_trees(self):
+        """
+        Tests that a user can plant multiple trees.
+        """
+        # ... (test code)
+```
