@@ -1,0 +1,25 @@
+# API Endpoint Test Requests
+# 
+# This file contains example requests to test the endpoints of the API.
+# Each section demonstrates how to interact with different parts of the API.
+
+
+### Log in
+# This section sends a POST request to the login endpoint to authenticate the user.
+# It provides the username and password in JSON format.
+
+POST http://127.0.0.1:8000/api/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123456789"
+}
+
+
+### Get trees planted by the authenticated user
+# This section sends a GET request to retrieve the trees planted by the authenticated user.
+# The request includes an Authorization header with a token obtained from the login step.
+
+GET http://127.0.0.1:8000/api/planted-trees/
+Authorization: Token <your token obtained when logging in>
