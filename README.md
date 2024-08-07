@@ -28,7 +28,7 @@ This project is a Django application that allows users to plant trees and track 
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.10.12
 - Django
 - Django Rest Framework
 
@@ -37,8 +37,7 @@ This project is a Django application that allows users to plant trees and track 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/yourrepository.git
-    cd yourrepository
+    git clone https://github.com/ViniciusRodrigues10/trees-everywhere-projet.git
     ```
 
 2. Create a virtual environment and activate it:
