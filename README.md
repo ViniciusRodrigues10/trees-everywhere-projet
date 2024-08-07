@@ -292,7 +292,49 @@ class TreePlantingTemplateTestCase(TestCase):
 
 ~~~json
 {
-  "username": "ze",
-  "password": "teste123456789"
+  "username": "user",
+  "password": "user123456789"
 }
 ~~~
+
+**Response:**
+
+~~~json
+{
+  "message": "Successfully logged in.",
+  "token": "e30c20d52a6d0d20508ebc4e68a5ef90e59a3008"
+}
+~~~
+
+### List Planted Trees
+
+**Endpoint:** /api/planted-trees/
+
+**Method:** GET
+
+**Headers:**
+
+~~~bash
+Authorization: Token e30c20d52a6d0d20508ebc4e68a5ef90e59a3008
+~~~
+
+**Response:**
+
+~~~json
+[
+  {
+    "id": 1,
+    "tree": "Tree 1",
+    "age": 2,
+    "latitude": "12.456",
+    "longitude": "13.456",
+    "planted_at": "2023-01-01T00:00:00Z",
+    "account": "Account 1"
+  },
+  ...
+]
+~~~
+
+## Conclusion
+
+This documentation provides an overview of the project structure, models, views, forms, serializers, admin configuration, testing, and API endpoints. Use this as a guide to understand the project.
